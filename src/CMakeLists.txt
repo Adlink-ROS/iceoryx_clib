@@ -9,5 +9,5 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 # Generate library
 add_library(iceoryx_clib SHARED ${LIB_SOURCES})
 
-# Add include file
+# Add include directories
 include_directories(${PROJECT_SOURCE_DIR}/include)

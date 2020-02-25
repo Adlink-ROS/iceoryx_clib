@@ -1,4 +1,4 @@
-#include "ice_clib.hpp"
+#include "ice_clib.h"
 
 extern "C"
 {
