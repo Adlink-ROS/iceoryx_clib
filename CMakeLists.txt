@@ -7,5 +7,6 @@ project(iceoryx_clib)
 # Message
 message("Start to config iceoryx C library")
 
-# Process src
+# Process src, example
 add_subdirectory(src)
+add_subdirectory(example)
