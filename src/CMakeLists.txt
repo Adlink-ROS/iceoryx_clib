@@ -10,7 +10,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 add_library(iceoryx_clib SHARED ${LIB_SOURCES})
 
 # Add include directories
-include_directories(${PROJECT_SOURCE_DIR}/include)
+target_include_directories(iceoryx_clib PRIVATE ${PROJECT_SOURCE_DIR}/include)
+
+# Add link library
+target_link_libraries(iceoryx_clib iceoryx_posh::iceoryx_posh)
 
 # Install
 install(TARGETS iceoryx_clib DESTINATION lib)
