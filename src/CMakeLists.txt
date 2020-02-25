@@ -11,3 +11,6 @@ add_library(iceoryx_clib SHARED ${LIB_SOURCES})
 
 # Add include directories
 include_directories(${PROJECT_SOURCE_DIR}/include)
+
+# Install
+install(TARGETS iceoryx_clib DESTINATION lib)
