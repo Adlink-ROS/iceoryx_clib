@@ -10,8 +10,8 @@ target_include_directories(ice_clib_pub PRIVATE ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(ice_clib_sub PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 # Link library
-target_link_libraries(ice_clib_pub iceoryx_clib)
-target_link_libraries(ice_clib_sub iceoryx_clib)
+target_link_libraries(ice_clib_pub PRIVATE iceoryx_clib)
+target_link_libraries(ice_clib_sub PRIVATE iceoryx_clib)
 
 # Install
 install(TARGETS ice_clib_pub DESTINATION bin)

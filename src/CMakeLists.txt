@@ -13,7 +13,7 @@ add_library(iceoryx_clib SHARED ${LIB_SOURCES})
 target_include_directories(iceoryx_clib PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 # Add link library
-target_link_libraries(iceoryx_clib iceoryx_posh::iceoryx_posh)
+target_link_libraries(iceoryx_clib PRIVATE iceoryx_posh::iceoryx_posh)
 
 # Install
 install(TARGETS iceoryx_clib DESTINATION lib)
