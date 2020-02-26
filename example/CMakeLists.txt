@@ -2,17 +2,17 @@
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 # Generate executable
-add_executable(publisher publisher.c)
-add_executable(subscriber subscriber.c)
+add_executable(ice_clib_pub publisher.c)
+add_executable(ice_clib_sub subscriber.c)
 
 # Add include directories
-target_include_directories(publisher PRIVATE ${PROJECT_SOURCE_DIR}/include)
-target_include_directories(subscriber PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(ice_clib_pub PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(ice_clib_sub PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 # Link library
-target_link_libraries(publisher iceoryx_clib)
-target_link_libraries(subscriber iceoryx_clib)
+target_link_libraries(ice_clib_pub iceoryx_clib)
+target_link_libraries(ice_clib_sub iceoryx_clib)
 
 # Install
-install(TARGETS publisher DESTINATION bin)
-install(TARGETS subscriber DESTINATION bin)
+install(TARGETS ice_clib_pub DESTINATION bin)
+install(TARGETS ice_clib_sub DESTINATION bin)
