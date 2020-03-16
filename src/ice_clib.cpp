@@ -69,6 +69,9 @@ void ice_clib_release_subscriber(struct ice_subscriber* handler)
 void ice_clib_offer(struct ice_publisher* ice_pub)
 {
     ice_pub->_pub->offer();
+    // We need to enable this to avoid the data lost.
+    // CY_TODO: Should this option be set in another function?
+    ice_pub->_pub->enableDoDeliverOnSubscription();
 }
 
 void ice_clib_stopOffer(struct ice_publisher* ice_pub)
