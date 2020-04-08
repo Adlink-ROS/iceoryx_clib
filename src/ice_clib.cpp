@@ -14,13 +14,15 @@ struct ice_publisher
 struct ice_subscriber
 {
     iox::popo::Subscriber * _sub;
-    void setSubCallback(SUB_CALLBACK r_callback)
+    void setSubCallback(SUB_CALLBACK r_callback, void *arg)
     {
         m_callback = r_callback;
+        callback_arg = arg;
         _sub->setReceiveHandler(std::bind(&ice_subscriber::receiveHandler, this));
     }
 private:
     SUB_CALLBACK m_callback;
+    void *callback_arg;
     void receiveHandler()
     {
         const void* chunk = nullptr;
@@ -28,7 +30,7 @@ private:
         while (_sub->getChunk(&chunk))
         {
             if (m_callback != NULL)
-                m_callback(chunk);
+                m_callback(chunk, callback_arg);
             _sub->releaseChunk(chunk);
         }
     }
@@ -136,9 +138,9 @@ void ice_clib_releaseChunk(struct ice_subscriber* ice_sub, const void* chunk)
     ice_sub->_sub->releaseChunk(chunk);
 }
 
-void ice_clib_setRecvHandler(struct ice_subscriber* ice_sub, SUB_CALLBACK r_callback)
+void ice_clib_setRecvHandler(struct ice_subscriber* ice_sub, SUB_CALLBACK r_callback, void *arg)
 {
-    ice_sub->setSubCallback(r_callback);
+    ice_sub->setSubCallback(r_callback, arg);
 }
 
 void ice_clib_unsetRecvHandler(struct ice_subscriber* ice_sub)

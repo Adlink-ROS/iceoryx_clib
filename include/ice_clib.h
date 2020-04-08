@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-typedef void (*SUB_CALLBACK)(const void *);
+typedef void (*SUB_CALLBACK)(const void *, void *);
 
 struct ice_publisher;
 struct ice_subscriber;
@@ -24,7 +24,7 @@ void ice_clib_subscribe(struct ice_subscriber* ice_sub, unsigned int cacheSize);
 void ice_clib_unsubscribe(struct ice_subscriber* ice_sub);
 int ice_clib_getChunk(struct ice_subscriber* ice_sub, const void** chunk);
 void ice_clib_releaseChunk(struct ice_subscriber* ice_sub, const void* chunk);
-void ice_clib_setRecvHandler(struct ice_subscriber* ice_sub, SUB_CALLBACK r_callback);
+void ice_clib_setRecvHandler(struct ice_subscriber* ice_sub, SUB_CALLBACK r_callback, void *arg);
 void ice_clib_unsetRecvHandler(struct ice_subscriber* ice_sub);
 
 #ifdef __cplusplus
