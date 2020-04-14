@@ -115,7 +115,7 @@ void ice_clib_stopOffer(struct ice_publisher* ice_pub)
 
 void* ice_clib_allocateChunk(struct ice_publisher* ice_pub, unsigned int size)
 {
-    return ice_pub->_pub->allocateChunk(size);
+    return ice_pub->_pub->allocateChunk(size, true);
 }
 
 void ice_clib_sendChunk(struct ice_publisher* ice_pub, const void* const payload)
