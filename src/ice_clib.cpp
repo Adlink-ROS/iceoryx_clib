@@ -123,6 +123,11 @@ void ice_clib_sendChunk(struct ice_publisher* ice_pub, const void* const payload
     ice_pub->_pub->sendChunk(payload);
 }
 
+int ice_clib_hasSubscriber(struct ice_publisher* ice_pub)
+{
+    return ice_pub->_pub->hasSubscribers();
+}
+
 void ice_clib_subscribe(struct ice_subscriber* ice_sub, unsigned int cacheSize)
 {
     ice_sub->_sub->subscribe(cacheSize);
