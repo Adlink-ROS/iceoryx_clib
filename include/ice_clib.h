@@ -11,6 +11,18 @@ typedef void (*SUB_CALLBACK)(const void *, void *);
 struct ice_publisher;
 struct ice_subscriber;
 
+enum DebugLevel
+{
+    DebugOff = 0,
+    DebugFatal,
+    DebugError,
+    DebugWarn,
+    DebugInfo,
+    DebugDebug,
+    DebugVerbose
+};
+
+void ice_clib_setDebugLevel(enum DebugLevel debuglevel);
 void ice_clib_init(char *name);
 struct ice_publisher* ice_clib_create_publisher(char *service, char *instance, char *event);
 struct ice_subscriber* ice_clib_create_subscriber(char *service, char *instance, char *event);

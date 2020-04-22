@@ -36,6 +36,21 @@ private:
     }
 };
 
+static iox::log::LogLevel level_maps[] =
+{
+    iox::log::LogLevel::kOff,
+    iox::log::LogLevel::kFatal,
+    iox::log::LogLevel::kError,
+    iox::log::LogLevel::kWarn,
+    iox::log::LogLevel::kInfo,
+    iox::log::LogLevel::kDebug,
+    iox::log::LogLevel::kVerbose
+};
+void ice_clib_setDebugLevel(enum DebugLevel debuglevel)
+{
+    iox::log::LogManager::GetLogManager().SetDefaultLogLevel(level_maps[debuglevel]);
+}
+
 void ice_clib_init(char *name)
 {
     // Create the runtime for registering with the RouDi daemon
