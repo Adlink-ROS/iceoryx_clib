@@ -60,13 +60,9 @@ void ice_clib_init(char *name)
 struct ice_publisher* ice_clib_create_publisher(char *service, char *instance, char *event)
 {
     struct ice_publisher *ice_pub;
-    // CY_TODO: Maybe there is a better way to initialize the variable.
-    iox::cxx::CString100 c_service;
-    iox::cxx::CString100 c_instance;
-    iox::cxx::CString100 c_event;
-    c_service.unsafe_assign(service);
-    c_instance.unsafe_assign(instance);
-    c_event.unsafe_assign(event);
+    iox::cxx::CString100 c_service(iox::cxx::TruncateToCapacity, service);
+    iox::cxx::CString100 c_instance(iox::cxx::TruncateToCapacity, instance);
+    iox::cxx::CString100 c_event(iox::cxx::TruncateToCapacity, event);
 
     ice_pub = (struct ice_publisher *)malloc(sizeof(struct ice_publisher));
     ice_pub->_pub = new iox::popo::Publisher({c_service, c_instance, c_event});
@@ -77,13 +73,9 @@ struct ice_publisher* ice_clib_create_publisher(char *service, char *instance, c
 struct ice_subscriber* ice_clib_create_subscriber(char *service, char *instance, char *event)
 {
     struct ice_subscriber *ice_sub;
-    // CY_TODO: Maybe there is a better way to initialize the variable.
-    iox::cxx::CString100 c_service;
-    iox::cxx::CString100 c_instance;
-    iox::cxx::CString100 c_event;
-    c_service.unsafe_assign(service);
-    c_instance.unsafe_assign(instance);
-    c_event.unsafe_assign(event);
+    iox::cxx::CString100 c_service(iox::cxx::TruncateToCapacity, service);
+    iox::cxx::CString100 c_instance(iox::cxx::TruncateToCapacity, instance);
+    iox::cxx::CString100 c_event(iox::cxx::TruncateToCapacity, event);
 
     ice_sub = (struct ice_subscriber *)malloc(sizeof(struct ice_subscriber));
     ice_sub->_sub = new iox::popo::Subscriber({c_service, c_instance, c_event});
