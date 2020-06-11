@@ -7,19 +7,28 @@ The library provides C function interface for iceoryx.
 You can build iceoryx_clib with colcon.
 
 ```
-mkdir -p ~/shmem_ws/src
-cd shmem_ws/src
+mkdir -p ~/ice_clib_ws/src
+cd ice_clib_ws/src
 git clone https://github.com/eclipse/iceoryx.git
 git clone git@bitbucket.org:ROScube/iceoryx_clib.git
-git clone git@bitbucket.org:ROScube/cyclonedds.git
-cd ~/shmem_ws
+cd ~/ice_clib_ws
 colcon build
 ```
 
 # Run example
 
+* Build code
 ```
+cd ~/ice_clib_ws
 source install/local_setup.bash
+cd src/iceoryx_clib/example
+mkdir build && cd build
+cmake ..
+make
+```
+
+* Run
+```
 # Run the following 3 commands in different terminals
 RouDi
 ice_clib_pub
